@@ -1,0 +1,16 @@
+[Unit]
+Description=Log Scanner for SSH anomalies
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/default/logscan.env
+ExecStart=/usr/local/bin/logscan.sh
+User=root
+Group=root
+Nice=10
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
